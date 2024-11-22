@@ -1,4 +1,4 @@
-package com.project.api.Services;
+package com.project.api.DataAccess;
 
 import com.project.api.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

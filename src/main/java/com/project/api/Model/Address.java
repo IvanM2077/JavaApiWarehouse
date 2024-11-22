@@ -14,8 +14,6 @@ public class Address {
     @JoinColumn(name = "CityId", nullable = false) // Clave foránea hacia City
     private City CityObj;
 
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserId", nullable = false) // Clave foránea hacia User
     private User UserObj;
