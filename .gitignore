@@ -1,0 +1,18 @@
+## Target directory ##
+target/
+## Maven files ##
+.mvn/
+*.log
+!mvnw
+!mvnw.cmd
+## IntelliJ IDEA ##
+.idea/
+*.iml
+out/
+## Visual Studio Code ##
+.vscode/
+## OS-specific files ##
+.DS_Store
+Thumbs.db
+## Git ##
+.gitattributes

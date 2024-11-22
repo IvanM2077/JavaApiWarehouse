@@ -1,0 +1,125 @@
+CREATE USER root
+    INEHRIT
+    CREATEDB
+    CREATESCHEME
+    CREATETABLES
+
+    Password=2000
+
+CREATE SCHEMA IF NOT EXISTS dbo;
+USE dbo;
+
+CREATE TABLE IF NOT EXISTS dbo.Role (
+    RoleId INT NOT NULL AUTO_INCREMENT,
+    RoleName VARCHAR(32) NOT NULL,
+    PRIMARY KEY (RoleId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.User (
+    UserId INT NOT NULL AUTO_INCREMENT,
+    FirstName VARCHAR(32) NOT NULL,
+    LastName VARCHAR(32) NOT NULL,
+    Email VARCHAR(32) NOT NULL,
+    Password VARCHAR(32) NOT NULL,
+    PhoneNumber VARCHAR(32) NOT NULL,
+    UserNameAPP VARCHAR(32) NOT NULL,
+    Age INT,
+    DateOnCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ActiveUser TINYINT DEFAULT 0 NOT NULL,
+    RoleId INT NOT NULL,
+    PRIMARY KEY (UserId),
+    FOREIGN KEY (RoleId) REFERENCES dbo.Role(RoleId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.Country (
+    CountryId INT NOT NULL AUTO_INCREMENT,
+    CountryName VARCHAR(32) NOT NULL,
+    PRIMARY KEY (CountryId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.State (
+    StateId INT NOT NULL AUTO_INCREMENT,
+    StateName VARCHAR(50) NOT NULL,
+    CountryId INT NOT NULL,
+    PRIMARY KEY (StateId),
+    FOREIGN KEY (CountryId) REFERENCES dbo.Country(CountryId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.City (
+    CityId INT NOT NULL AUTO_INCREMENT,
+    CityName VARCHAR(50) NOT NULL,
+    CodePostal VARCHAR(10) NOT NULL,
+    StateId INT NOT NULL,
+    PRIMARY KEY (CityId),
+    FOREIGN KEY (StateId) REFERENCES dbo.State(StateId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.Neighborhood (
+    NeighborhoodId INT NOT NULL AUTO_INCREMENT,
+    NeighborhoodName VARCHAR(50) NOT NULL,
+    CodePostal VARCHAR(10) NOT NULL,
+    CityId INT NOT NULL,
+    PRIMARY KEY (NeighborhoodId),
+    FOREIGN KEY (CityId) REFERENCES dbo.City(CityId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.Warehouse (
+    WarehouseId INT NOT NULL AUTO_INCREMENT,
+    WarehouseName VARCHAR(50) NOT NULL,
+    CodePostal VARCHAR(10) NOT NULL,
+    CityId INT NOT NULL,
+    PRIMARY KEY (WarehouseId),
+    FOREIGN KEY (CityId) REFERENCES dbo.City(CityId)
+);
+CREATE TABLE IF NOT EXISTS dbo.WarehouseInventory (
+    WarehouseId INT NOT NULL,
+    ProductId INT NOT NULL,
+    Amount INT NOT NULL,
+    FOREIGN KEY (WarehouseId) REFERENCES dbo.Warehouse(WarehouseId),
+    FOREIGN KEY (ProductId) REFERENCES dbo.Product(ProductId)
+);
+CREATE TABLE IF NOT EXISTS dbo.Product (
+    ProductId INT NOT NULL AUTO_INCREMENT,
+    ProductName VARCHAR(50) NOT NULL,
+    PRIMARY KEY (ProductId)
+);
+CREATE TABLE IF NOT EXISTS dbo.ProductMedia (
+    ProductMediaId INT NOT NULL AUTO_INCREMENT,
+    ProductId INT NOT NULL,
+    UrlFile VARCHAR(150) NOT NULL,
+    MediaType VARCHAR(32) NOT NULL,
+    PRIMARY KEY (ProductMediaId)
+    FOREIGN KEY (ProductId) References dbo.Product(ProductId)
+);
+CREATE TABLE IF NOT EXISTS dbo.Status (
+    StatusId INT NOT NULL,
+    StatusName VARCHAR(32) NOT NULL,
+    PRIMARY KEY (StatusId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.Order (
+    OrderId INT NOT NULL,
+    UserId INT NOT NULL,
+    StatusId INT NOT NULL,
+    PRIMARY KEY (OrderId),
+    FOREIGN KEY (UserId) REFERENCES dbo.User(UserId),
+    FOREIGN KEY (StatusId) REFERENCES dbo.Status(StatusId)
+);
+CREATE TABLE IF NOT EXISTS dbo.OrderProducts (
+    OrderId INT NOT NULL,
+    UserId INT NOT NULL,
+    ProductId INT NOT NULL,
+    FOREIGN KEY (OrderId) REFERENCES dbo.Order(UserId),
+    FOREIGN KEY (UserId) REFERENCES dbo.User(UserId),
+    FOREIGN KEY (ProductId) REFERENCES dbo.Product(StatusId)
+);
+
+CREATE TABLE IF NOT EXISTS dbo.Address (
+    AddressId INT NOT NULL,
+    AddressName VARCHAR(32) NOT NULL,
+    CityId INT NOT NULL,
+    UserId INT NOT NULL,
+    PRIMARY KEY (AddressId)
+    FOREIGN KEY (CityId) REFERENCES dbo.City(CityId),
+    FOREIGN KEY (UserId) REFERENCES dbo.User(UserId)
+);
