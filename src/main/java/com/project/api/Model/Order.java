@@ -2,21 +2,18 @@ package com.project.api.Model;
 import jakarta.persistence.*;
 import java.util.List;
 @Entity
-@Table
+@Table(name = "TblOrder")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long OrderId;
-
+    private long orderId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UserId", nullable = false) // Clave foránea hacia User
-    private User UserObj;
-
+    @JoinColumn(name = "userId", nullable = false) // Clave foránea hacia User
+    private User user;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "StatusId", nullable = false) // Clave foránea hacia Status
-    private Status StatusId;
-
-    @OneToMany(mappedBy = "OrderObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<OrderProduct> OrderProductList;
+    @JoinColumn(name = "statusId", nullable = false) // Clave foránea hacia Status
+    private Status status;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderProduct> orderProducts;
 }
 

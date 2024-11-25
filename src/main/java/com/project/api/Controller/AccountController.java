@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController()
 public class AccountController {
-
+       /*
     @Autowired
     private UserRepository _userRepo;
 
@@ -33,6 +33,8 @@ public class AccountController {
     }
     @GetMapping("/GetUserWithSameAge/{Age}")
     public ResponseEntity<?> returnUserWithSameAge(@PathVariable int Age){
+
+
         try{
             List<User> usersWithSameAge = _userRepo.findAll().stream()
                     .filter(user -> user.getAge() == Age)  // Filtra por la edad
@@ -46,6 +48,12 @@ public class AccountController {
         catch (Exception e){
             return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+
+
+        return new ResponseEntity<>("Exito man practicando",HttpStatus.OK);
     }
+            */
+
 }
 

@@ -1,21 +1,20 @@
 package com.project.api.Model;
+
 import jakarta.persistence.*;
 import java.util.List;
 @Entity
-@Table
+@Table(name = "TblWarehouse")
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long WarehouseId;
-
+    private long warehouseId;
     @Column(nullable = false)
-    private String WarehouseName;
-
+    private String warehouseName;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CityId", nullable = false) // Clave foránea hacia City
+    @JoinColumn(name = "cityId", nullable = false) // Clave foránea hacia City
     private City city;
-
-    @OneToMany(mappedBy = "WarehouseObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<WarehouseInventory> WarehouseInventoryList;
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<WarehouseInventory> warehouseInventoryList;
 }
+
 

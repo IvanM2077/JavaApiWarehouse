@@ -2,16 +2,17 @@ package com.project.api.Model;
 import jakarta.persistence.*;
 import java.util.List;
 @Entity
-@Table
+@Table(name = "TblStatus")
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long StatusId;
+    private long statusId;
 
     @Column(nullable = false)
-    private String StatusName;
+    private String statusName;
 
-    @OneToMany(mappedBy = "StatusId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> OrderList;
+    @OneToMany(mappedBy = "status", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Order> orders;
 }
+
 

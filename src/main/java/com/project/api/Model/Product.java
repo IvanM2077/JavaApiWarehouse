@@ -1,22 +1,24 @@
 package com.project.api.Model;
 import jakarta.persistence.*;
+import java.util.List;
 @Entity
-@Table
+@Table(name = "TblProduct")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ProductId;
-
+    private long productId;
     @Column(nullable = false)
-    private String Item;
-
+    private String item;
     @Column(nullable = false)
-    private String Description;
-
+    private String description;
     @Column(nullable = false)
-    private Double Price;
-
-    @OneToOne(mappedBy = "Product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Double price;
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProductMedia productMedia;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<WarehouseInventory> products;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderProduct> orderProducts;
 }
+
 

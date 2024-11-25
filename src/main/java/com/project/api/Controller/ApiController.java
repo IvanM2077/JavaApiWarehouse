@@ -9,7 +9,7 @@ import java.util.List;
 public class ApiController {
 
     private UserService _userService;
-
+    /*
     public ApiController(UserService userService){
         this._userService=userService;
     }
@@ -24,7 +24,7 @@ public class ApiController {
     public List<User> GetUsers(){
         return _userService.GetAll();
     }
-
+    */
 
 
 

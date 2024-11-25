@@ -1,21 +1,18 @@
 package com.project.api.Model;
+
 import jakarta.persistence.*;
 import java.util.List;
 @Entity
-@Table
+@Table(name = "TblState")
 public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long StateId;
-
+    private long stateId;
     @Column(nullable = false)
-    private String StateName;
-
+    private String stateName;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CountryId", nullable = false) // Clave foránea hacia Country
-    private Country CountryObj;
-
-    @OneToMany(mappedBy = "StateObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<City> CityList;
+    @JoinColumn(name = "countryId", nullable = false) // Clave foránea hacia Country
+    private Country country;
+    @OneToMany(mappedBy = "state", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<City> cities;
 }
-

@@ -1,19 +1,19 @@
 package com.project.api.Model;
 import jakarta.persistence.*;
-import java.util.List;
 @Entity
-@Table
+@Table(name = "TblOrderProduct")
 public class OrderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long OrderProductId;
+    private long orderProductId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OrderId", nullable = false) // Clave foránea hacia Order
-    private Order OrderObj;
+    @JoinColumn(name = "orderId", nullable = false) // Clave foránea hacia Order
+    private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ProductId", nullable = false) // Clave foránea hacia Product
-    private Product ProductObj;
+    @JoinColumn(name = "productId", nullable = false) // Clave foránea hacia Product
+    private Product product;
 }
+
 

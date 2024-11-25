@@ -32,13 +32,6 @@ public class UserService implements CrudOperations<User>, QueryOperation<UserRep
 
     @Override
     public void Update(User entity) {
-        var userToFind = _repository.findById(entity.getId());
-        if (userToFind != null){
-
-         }
-        else {
-
-        }
     }
 
     @Override
