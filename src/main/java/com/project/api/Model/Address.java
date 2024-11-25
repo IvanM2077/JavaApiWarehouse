@@ -17,4 +17,36 @@ public class Address {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserId", nullable = false) // Clave foránea hacia User
     private User user;
+
+    public long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

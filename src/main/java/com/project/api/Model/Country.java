@@ -13,4 +13,28 @@ public class Country {
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<State> states;
+
+    public long getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(long countryId) {
+        this.countryId = countryId;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public List<State> getStates() {
+        return states;
+    }
+
+    public void setStates(List<State> states) {
+        this.states = states;
+    }
 }

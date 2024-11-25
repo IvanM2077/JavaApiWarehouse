@@ -19,6 +19,62 @@ public class Product {
     private List<WarehouseInventory> products;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderProduct> orderProducts;
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public ProductMedia getProductMedia() {
+        return productMedia;
+    }
+
+    public void setProductMedia(ProductMedia productMedia) {
+        this.productMedia = productMedia;
+    }
+
+    public List<WarehouseInventory> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<WarehouseInventory> products) {
+        this.products = products;
+    }
+
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 }
 
 

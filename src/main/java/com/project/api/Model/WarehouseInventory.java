@@ -14,5 +14,37 @@ public class WarehouseInventory {
     private Product product;
     @Column(nullable = false)
     private int warehouseAmount;
+
+    public long getWarehouseInventoryId() {
+        return warehouseInventoryId;
+    }
+
+    public void setWarehouseInventoryId(long warehouseInventoryId) {
+        this.warehouseInventoryId = warehouseInventoryId;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getWarehouseAmount() {
+        return warehouseAmount;
+    }
+
+    public void setWarehouseAmount(int warehouseAmount) {
+        this.warehouseAmount = warehouseAmount;
+    }
 }
 

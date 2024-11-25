@@ -15,5 +15,37 @@ public class Order {
     private Status status;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderProduct> orderProducts;
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 }
 
