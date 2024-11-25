@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface CrudOperations<T> {
     T GetWithId(long id);
+    List<T> GetAll();
     void Create(T entity);
     void Update(T entity);
     void Delete(T entity);

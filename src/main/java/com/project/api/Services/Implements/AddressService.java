@@ -20,6 +20,11 @@ public class AddressService implements CrudOperations<Address> {
     }
 
     @Override
+    public List<Address> GetAll() {
+        return null;
+    }
+
+    @Override
     public void Create(Address entity) {
 
     }
