@@ -8,13 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ApiApplicationTests {
 
 	@Test
-	public void testCommit(){
+	public void testApi(){
 		//ARRANGE
-		int number =1;
 
 		//ACT
 
 		//ASSERT
-		Assertions.assertEquals(1,number);
 	}
 }

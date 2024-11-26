@@ -1,6 +1,6 @@
 package com.project.api.Services.Dtos.Interfaces;
 
-public interface IPaginatedRequest <T>{
+public interface IPaginatedRequestMethods<T>{
     int getItemsToShow();
     void setItemsToShow(int ItemToShow);
 
@@ -11,5 +11,5 @@ public interface IPaginatedRequest <T>{
     void setSort(String Sort);
 
     Boolean getAscending();
-    void setAscending();
+    void setAscending(Boolean ascending);
 }

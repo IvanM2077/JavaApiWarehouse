@@ -1,5 +1,4 @@
 package com.project.api.ModelTest;
-
 import com.project.api.Model.Address;
 import com.project.api.Model.City;
 import com.project.api.Model.User;
