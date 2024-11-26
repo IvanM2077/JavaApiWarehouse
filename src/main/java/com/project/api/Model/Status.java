@@ -12,7 +12,7 @@ public class Status {
     private String statusName;
 
     @OneToMany(mappedBy = "status", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> orders;
+    private List<Order> statusOrders;
 
     public long getStatusId() {
         return statusId;
@@ -30,12 +30,12 @@ public class Status {
         this.statusName = statusName;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<Order> getStatusOrders() {
+        return statusOrders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setStatusOrders(List<Order> statusOrders) {
+        this.statusOrders = statusOrders;
     }
 }
 

@@ -55,7 +55,7 @@ public class UserService implements CrudOperations<User>, QueryOperation<UserRep
     }
 
     @Override
-    public UserRepository GetQuery() {
+    public UserRepository GetRepository() {
         return this._repository;
     }
 }

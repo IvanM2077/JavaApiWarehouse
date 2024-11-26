@@ -3,13 +3,14 @@ package com.project.api.Services.Implements;
 import com.project.api.DataAccess.AddressRepository;
 import com.project.api.Model.Address;
 import com.project.api.Services.Interfaces.CrudOperations;
+import com.project.api.Services.Interfaces.QueryOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AddressService implements CrudOperations<Address> {
+public class AddressService implements CrudOperations<Address>, QueryOperation<AddressRepository> {
     @Autowired
     private AddressRepository _addressRepository; //Se inyecta la depedencia en el constructor automáticamente
     //public AddressService(AddressRepository addressRepository){ _addressRepository=addressRepository;}
@@ -26,7 +27,6 @@ public class AddressService implements CrudOperations<Address> {
 
     @Override
     public void Create(Address entity) {
-
     }
 
     @Override
@@ -52,5 +52,10 @@ public class AddressService implements CrudOperations<Address> {
     @Override
     public void BulkDelete(List<Address> entities) {
 
+    }
+    //Query Operations
+    @Override
+    public AddressRepository GetRepository() {
+        return _addressRepository;
     }
 }

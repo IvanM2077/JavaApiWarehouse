@@ -16,7 +16,7 @@ public class Product {
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProductMedia productMedia;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<WarehouseInventory> products;
+    private List<WarehouseInventory> warehouseInventoryProducts;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderProduct> orderProducts;
 
@@ -60,12 +60,12 @@ public class Product {
         this.productMedia = productMedia;
     }
 
-    public List<WarehouseInventory> getProducts() {
-        return products;
+    public List<WarehouseInventory> getWarehouseInventoryProducts() {
+        return warehouseInventoryProducts;
     }
 
-    public void setProducts(List<WarehouseInventory> products) {
-        this.products = products;
+    public void setWarehouseInventoryProducts(List<WarehouseInventory> warehouseInventoryProducts) {
+        this.warehouseInventoryProducts = warehouseInventoryProducts;
     }
 
     public List<OrderProduct> getOrderProducts() {

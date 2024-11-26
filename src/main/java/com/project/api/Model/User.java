@@ -7,7 +7,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long userId;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -32,12 +32,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Address> addresses;
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long id) {
+        this.userId = id;
     }
 
     public String getFirstName() {
