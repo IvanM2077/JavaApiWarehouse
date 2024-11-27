@@ -4,54 +4,81 @@ import com.project.api.DataAccess.CountryRepository;
 import com.project.api.Model.Country;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CountryService implements CrudOperations<Country>, QueryOperation<CountryRepository> {
+
+    private CountryRepository _repository;
+
+    public CountryService(CountryRepository repository){
+        this._repository=repository;
+    }
+
+
     @Override
     public Country GetWithId(long id) {
-        return null;
+        return _repository.getById(id);
     }
 
     @Override
     public List<Country> GetAll() {
-        return null;
+        return _repository.findAll();
     }
 
     @Override
     public void Create(Country entity) {
-
+        if(entity.getCountryId() !=0){
+            throw new IllegalArgumentException("Cannot create an entity with Id assigned");
+        }
+        _repository.save(entity);
     }
 
     @Override
     public void Update(Country entity) {
-
+        if(entity.getCountryId() ==0){
+            throw new IllegalArgumentException("Cannot update an entity without Id assigned");
+        }
+        _repository.save(entity);
     }
 
     @Override
     public void Delete(Country entity) {
-
+        if(entity.getCountryId() ==0){
+            throw new IllegalArgumentException("Cannot delete an entity without Id assigned");
+        }
+        _repository.delete(entity);
     }
 
     @Override
     public void BulkCreate(List<Country> entities) {
-
+        if(entities.stream().anyMatch(entity->entity.getCountryId() !=0)){
+            throw new IllegalArgumentException("Cannot create entities with Id assigned");
+        }
+        _repository.saveAll(entities);
     }
 
     @Override
     public void BulkUpdate(List<Country> entities) {
-
+        if(entities.stream().anyMatch(entity->entity.getCountryId() ==0)){
+            throw new IllegalArgumentException("Cannot update entities without Id assigned");
+        }
+        _repository.saveAll(entities);
     }
 
     @Override
     public void BulkDelete(List<Country> entities) {
-
+        if(entities.stream().anyMatch(entity->entity.getCountryId() ==0)){
+            throw new IllegalArgumentException("Cannot delete entities without Id assigned");
+        }
+        _repository.deleteAll(entities);
     }
 
     @Override
     public CountryRepository GetRepository() {
-        return null;
+        return _repository;
     }
 }
