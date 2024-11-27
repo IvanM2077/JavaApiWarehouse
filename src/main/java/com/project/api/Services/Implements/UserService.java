@@ -13,8 +13,6 @@ import java.util.List;
 public class UserService implements CrudOperations<User>, QueryOperation<UserRepository> {
     @Autowired
     private UserRepository _repository;
-
-
     @Override
     public User GetWithId(long id) {
         return _repository.findById(id).orElse(null );
@@ -27,31 +25,38 @@ public class UserService implements CrudOperations<User>, QueryOperation<UserRep
 
     @Override
     public void Create(User entity) {
+        if(entity.getUserId() !=0){throw new IllegalArgumentException("Cannot save user with ID assigned");}
         _repository.save(entity);
     }
 
     @Override
     public void Update(User entity) {
+        if(entity.getUserId() ==0){throw new IllegalArgumentException("Cannot update user without ID assigned");}
+        _repository.save(entity);
+
     }
 
     @Override
     public void Delete(User entity) {
-
+        if(entity.getUserId() ==0){throw new IllegalArgumentException("Cannot delete user without ID assigned");}
+        _repository.delete(entity);
     }
-
     @Override
     public void BulkCreate(List<User> entities) {
-
+        if(entities.stream().anyMatch(user -> user.getUserId()!=0)){throw new IllegalArgumentException("Cannot save users with ID assigned ");}
+        _repository.saveAll(entities);
     }
 
     @Override
     public void BulkUpdate(List<User> entities) {
-
+        if(entities.stream().anyMatch(user -> user.getUserId()==0)){throw new IllegalArgumentException("Cannot update users without ID assigned ");}
+        _repository.saveAll(entities);
     }
 
     @Override
     public void BulkDelete(List<User> entities) {
-
+        if(entities.stream().anyMatch(user -> user.getUserId()!=0)){throw new IllegalArgumentException("Cannot delete users without ID assigned ");}
+        _repository.deleteAll(entities);
     }
 
     @Override
