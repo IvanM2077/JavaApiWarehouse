@@ -1,4 +1,7 @@
 package com.project.api.DataAccess;
 
-public interface CountryRepository {
+import com.project.api.Model.Country;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CountryRepository extends JpaRepository<Country, Long> {
 }

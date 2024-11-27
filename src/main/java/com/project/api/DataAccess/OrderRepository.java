@@ -1,4 +1,7 @@
 package com.project.api.DataAccess;
 
-public interface OrderRepository {
+import com.project.api.Model.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }
