@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.StateRepository;
+import com.project.api.DataAccess.Interfaces.IStateRepository;
 import com.project.api.Model.State;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StateService implements CrudOperations<State>, QueryOperation<StateRepository> {
+public class StateService implements CrudOperations<State>, QueryOperation<IStateRepository> {
 
-    @Autowired
-    private StateRepository _repository;
+    //@Autowired
+    private IStateRepository _repository;
+    public StateService(IStateRepository repository){this._repository= repository;}
+
 
     @Override
     public State GetWithId(long id) {
@@ -74,7 +76,7 @@ public class StateService implements CrudOperations<State>, QueryOperation<State
     }
 
     @Override
-    public StateRepository GetRepository() {
+    public IStateRepository GetRepository() {
         return _repository;
     }
 }

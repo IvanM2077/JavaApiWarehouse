@@ -1,7 +1,7 @@
-package com.project.api.DataAccess;
+package com.project.api.DataAccess.Interfaces;
 
 import com.project.api.Model.ProductMedia;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductMediaRepository extends JpaRepository<ProductMedia, Long> {
+public interface IProductMediaRepository extends JpaRepository<ProductMedia, Long> {
 }

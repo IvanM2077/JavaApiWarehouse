@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.WarehouseInventoryRepository;
+import com.project.api.DataAccess.Interfaces.IWarehouseInventoryRepository;
 import com.project.api.Model.WarehouseInventory;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class WarehouseInventoryService implements CrudOperations<WarehouseInventory>, QueryOperation<WarehouseInventoryRepository> {
-    @Autowired
-    private WarehouseInventoryRepository _repository;
+public class WarehouseInventoryService implements CrudOperations<WarehouseInventory>, QueryOperation<IWarehouseInventoryRepository> {
+    //@Autowired
+    private IWarehouseInventoryRepository _repository;
+    public WarehouseInventoryService(IWarehouseInventoryRepository repository ){this._repository = repository;}
 
     @Override
     public WarehouseInventory GetWithId(long id) {
@@ -72,7 +73,7 @@ public class WarehouseInventoryService implements CrudOperations<WarehouseInvent
         _repository.deleteAll(entities);
     }
     @Override
-    public WarehouseInventoryRepository GetRepository() {
+    public IWarehouseInventoryRepository GetRepository() {
         return _repository;
     }
 }

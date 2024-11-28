@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.CityRepository;
+import com.project.api.DataAccess.Interfaces.ICityRepository;
 import com.project.api.Model.City;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CityService implements CrudOperations<City>, QueryOperation<CityRepository> {
-    @Autowired
-    private CityRepository _repository;
-    //public CityService(CityRepository repository){this._repository = repository; }
+public class CityService implements CrudOperations<City>, QueryOperation<ICityRepository> {
+    //@Autowired
+    private ICityRepository _repository;
+    public CityService(ICityRepository repository){this._repository = repository; }
     @Override
     public City GetWithId(long id){
         return _repository.findById(id).orElse(null );
@@ -61,7 +61,7 @@ public class CityService implements CrudOperations<City>, QueryOperation<CityRep
     }
 
     @Override
-    public CityRepository GetRepository() {
+    public ICityRepository GetRepository() {
         return _repository;
     }
     

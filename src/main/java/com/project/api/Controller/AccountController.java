@@ -1,12 +1,5 @@
 package com.project.api.Controller;
-import com.project.api.Model.User;
-import com.project.api.DataAccess.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController()
 public class AccountController {

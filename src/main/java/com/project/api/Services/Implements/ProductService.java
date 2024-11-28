@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.ProductRepository;
+import com.project.api.DataAccess.Interfaces.IProductRepository;
 import com.project.api.Model.Product;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductService implements CrudOperations<Product>, QueryOperation<ProductRepository> {
-    @Autowired
-    private ProductRepository _repository;
+public class ProductService implements CrudOperations<Product>, QueryOperation<IProductRepository> {
+    //@Autowired
+    private IProductRepository _repository;
+    public ProductService(IProductRepository repository){this._repository= repository;}
+
     @Override
     public Product GetWithId(long id) {
         return _repository.getById(id);
@@ -72,7 +74,7 @@ public class ProductService implements CrudOperations<Product>, QueryOperation<P
     }
 
     @Override
-    public ProductRepository GetRepository() {
+    public IProductRepository GetRepository() {
         return _repository;
     }
 }

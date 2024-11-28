@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.OrderProductRepository;
+import com.project.api.DataAccess.Interfaces.IOrderProductRepository;
 import com.project.api.Model.OrderProduct;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderProductService implements CrudOperations<OrderProduct>, QueryOperation<OrderProductRepository> {
-    @Autowired
-    private OrderProductRepository _repository;
-
+public class OrderProductService implements CrudOperations<OrderProduct>, QueryOperation<IOrderProductRepository> {
+    //@Autowired
+    private IOrderProductRepository _repository;
+    public OrderProductService(IOrderProductRepository repository){this._repository=repository;}
 
     @Override
     public OrderProduct GetWithId(long id) {
@@ -74,7 +74,7 @@ public class OrderProductService implements CrudOperations<OrderProduct>, QueryO
     }
 
     @Override
-    public OrderProductRepository GetRepository() {
+    public IOrderProductRepository GetRepository() {
         return _repository;
     }
 }

@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.OrderRepository;
+import com.project.api.DataAccess.Interfaces.IOrderRepository;
 import com.project.api.Model.Order;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderService implements CrudOperations<Order>, QueryOperation<OrderRepository> {
-    @Autowired
-    private OrderRepository _repository;
+public class OrderService implements CrudOperations<Order>, QueryOperation<IOrderRepository> {
+    //@Autowired
+    private IOrderRepository _repository;
+    public OrderService(IOrderRepository repository){this._repository=repository;}
+
     @Override
     public Order GetWithId(long id) {
         return _repository.getById(id);
@@ -74,7 +76,7 @@ public class OrderService implements CrudOperations<Order>, QueryOperation<Order
     }
 
     @Override
-    public OrderRepository GetRepository() {
+    public IOrderRepository GetRepository() {
         return _repository;
     }
 }

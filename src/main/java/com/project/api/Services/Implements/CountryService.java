@@ -1,20 +1,19 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.CountryRepository;
+import com.project.api.DataAccess.Interfaces.ICountryRepository;
 import com.project.api.Model.Country;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CountryService implements CrudOperations<Country>, QueryOperation<CountryRepository> {
+public class CountryService implements CrudOperations<Country>, QueryOperation<ICountryRepository> {
 
-    private CountryRepository _repository;
+    private ICountryRepository _repository;
 
-    public CountryService(CountryRepository repository){
+    public CountryService(ICountryRepository repository){
         this._repository=repository;
     }
 
@@ -78,7 +77,7 @@ public class CountryService implements CrudOperations<Country>, QueryOperation<C
     }
 
     @Override
-    public CountryRepository GetRepository() {
+    public ICountryRepository GetRepository() {
         return _repository;
     }
 }

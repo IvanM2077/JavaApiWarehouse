@@ -1,7 +1,7 @@
-package com.project.api.DataAccess;
+package com.project.api.DataAccess.Interfaces;
 
 import com.project.api.Model.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StatusRepository extends JpaRepository<Status, Long> {
+public interface IStatusRepository extends JpaRepository<Status, Long> {
 }

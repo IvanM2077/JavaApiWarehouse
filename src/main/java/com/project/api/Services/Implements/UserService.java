@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.UserRepository;
+import com.project.api.DataAccess.Interfaces.IUserRepository;
 import com.project.api.Model.User;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService implements CrudOperations<User>, QueryOperation<UserRepository> {
-    @Autowired
-    private UserRepository _repository;
+public class UserService implements CrudOperations<User>, QueryOperation<IUserRepository> {
+    //@Autowired
+    private IUserRepository _repository;
+    public UserService(IUserRepository repository){this._repository = repository;}
+
     @Override
     public User GetWithId(long id) {
         return _repository.findById(id).orElse(null );
@@ -72,7 +74,7 @@ public class UserService implements CrudOperations<User>, QueryOperation<UserRep
     }
 
     @Override
-    public UserRepository GetRepository() {
+    public IUserRepository GetRepository() {
         return this._repository;
     }
 }

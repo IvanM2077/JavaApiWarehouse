@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.ProductMediaRepository;
+import com.project.api.DataAccess.Interfaces.IProductMediaRepository;
 import com.project.api.Model.ProductMedia;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductMediaService implements CrudOperations<ProductMedia>, QueryOperation<ProductMediaRepository> {
-    @Autowired
-    private ProductMediaRepository _repository;
+public class ProductMediaService implements CrudOperations<ProductMedia>, QueryOperation<IProductMediaRepository> {
+    //@Autowired
+    private IProductMediaRepository _repository;
+    public ProductMediaService(IProductMediaRepository repository){this._repository= repository;}
 
     @Override
     public ProductMedia GetWithId(long id) {
@@ -74,7 +75,7 @@ public class ProductMediaService implements CrudOperations<ProductMedia>, QueryO
     }
 
     @Override
-    public ProductMediaRepository GetRepository() {
+    public IProductMediaRepository GetRepository() {
         return _repository;
     }
 }

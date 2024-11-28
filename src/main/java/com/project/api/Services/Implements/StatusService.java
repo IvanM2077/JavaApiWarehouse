@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.StatusRepository;
+import com.project.api.DataAccess.Interfaces.IStatusRepository;
 import com.project.api.Model.Status;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StatusService implements CrudOperations<Status>,QueryOperation<StatusRepository> {
+public class StatusService implements CrudOperations<Status>,QueryOperation<IStatusRepository> {
 
-    @Autowired
-    private StatusRepository _repository;
+    //@Autowired
+    private IStatusRepository _repository;
+    public StatusService(IStatusRepository repository){this._repository=repository;}
 
     @Override
     public Status GetWithId(long id) {
@@ -74,7 +75,7 @@ public class StatusService implements CrudOperations<Status>,QueryOperation<Stat
     }
 
     @Override
-    public StatusRepository GetRepository() {
+    public IStatusRepository GetRepository() {
         return _repository;
     }
 }

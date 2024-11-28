@@ -1,6 +1,6 @@
 package com.project.api.Services.Implements;
 
-import com.project.api.DataAccess.RoleRepository;
+import com.project.api.DataAccess.Interfaces.IRoleRepository;
 import com.project.api.Model.Role;
 import com.project.api.Services.Interfaces.CrudOperations;
 import com.project.api.Services.Interfaces.QueryOperation;
@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoleService implements CrudOperations<Role>, QueryOperation<RoleRepository> {
-    @Autowired
-    private RoleRepository _repository;
+public class RoleService implements CrudOperations<Role>, QueryOperation<IRoleRepository> {
+    //@Autowired
+    private IRoleRepository _repository;
+    public RoleService(IRoleRepository repository){this._repository= repository;}
+
     @Override
     public Role GetWithId(long id) {
         return _repository.findById(id).orElse(null);
@@ -72,7 +74,7 @@ public class RoleService implements CrudOperations<Role>, QueryOperation<RoleRep
     }
 
     @Override
-    public RoleRepository GetRepository() {
+    public IRoleRepository GetRepository() {
         return _repository;
     }
 }
