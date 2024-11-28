@@ -55,71 +55,8 @@ public class DataProvider {
      return new Country();
     }
     //endregion
-    //region
 
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-    //region
-
-
-    public static obj getById_(){
-        return new ();
-    }
-    //endregion
-
-
+    //region OrderProduct
     public static List<OrderProduct> allOrderProducts(){
         return List.of(
                 new OrderProduct(),
@@ -130,6 +67,13 @@ public class DataProvider {
                 new OrderProduct()
         );
     }
+
+    public static OrderProduct getByIdOrderProduct(){
+        return new OrderProduct();
+    }
+    //endregion
+
+    //region Order
     public static List<Order> allOrders(){
         return List.of(
                 new Order(),
@@ -140,6 +84,13 @@ public class DataProvider {
                 new Order()
         );
     }
+
+    public static Order getByIdOrder(){
+        return new Order();
+    }
+    //endregion
+
+    //region ProductMedia
     public static List<ProductMedia> allProductMedia(){
         return List.of(
                 new ProductMedia(),
@@ -150,6 +101,13 @@ public class DataProvider {
                 new ProductMedia()
         );
     }
+
+    public static ProductMedia getByIdProductMedia(){
+        return new ProductMedia();
+    }
+    //endregion
+
+    //region Product
     public static List<Product> allProducts(){
         return List.of(
                 new Product(),
@@ -160,6 +118,13 @@ public class DataProvider {
                 new Product()
         );
     }
+
+    public static Product getByIdProduct(){
+        return new Product();
+    }
+    //endregion
+
+    //region Role
     public static List<Role> allRoles(){
         return List.of(
                 new Role(),
@@ -170,6 +135,13 @@ public class DataProvider {
                 new Role()
         );
     }
+
+    public static Role getByIdRole(){
+        return new Role();
+    }
+    //endregion
+
+    //region State
     public static List<State> allStates(){
         return List.of(
                 new State(),
@@ -180,6 +152,13 @@ public class DataProvider {
                 new State()
         );
     }
+
+    public static State getByIdState(){
+        return new State();
+    }
+    //endregion
+
+    //region Status
     public static List<Status> allStatus(){
         return List.of(
                 new Status(),
@@ -190,6 +169,13 @@ public class DataProvider {
                 new Status()
         );
     }
+
+    public static Status getByIdStatus(){
+        return new Status();
+    }
+    //endregion
+
+    //region User
     public static List<User> allUsers(){
         return List.of(
                 new User(),
@@ -200,6 +186,13 @@ public class DataProvider {
                 new User()
         );
     }
+
+    public static User getByIdUser(){
+        return new User();
+    }
+    //endregion
+
+    //region WarehouseInventory
     public static List<WarehouseInventory> allWarehousesInventories(){
         return List.of(
                 new WarehouseInventory(),
@@ -210,6 +203,13 @@ public class DataProvider {
                 new WarehouseInventory()
         );
     }
+
+    public static WarehouseInventory getByIdWarehouseInventory(){
+        return new WarehouseInventory();
+    }
+    //endregion
+
+    //region Warehouse
     public static List<Warehouse> allWarehouses(){
         return List.of(
                 new Warehouse(),
@@ -220,5 +220,22 @@ public class DataProvider {
                 new Warehouse()
         );
     }
+
+    public static Warehouse getByIdWarehouse(){
+        return new Warehouse();
+    }
+    //endregion
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
