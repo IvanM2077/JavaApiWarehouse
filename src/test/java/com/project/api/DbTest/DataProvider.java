@@ -7,24 +7,112 @@ import java.util.List;
 public class DataProvider {
 
     //region Address
-    public static List<Address> getAllAddress(){
+    public static List<Address> getAllAddress() {
         System.out.println("Mock");
-        return List.of(
+        var addressList = List.of(
                 new Address(),
                 new Address(),
                 new Address(),
                 new Address(),
                 new Address(),
                 new Address()
-                );
+        );
+        Long id = 1L;
+        for (var address : addressList) {
+            address.setAddressId(id++);
+        }
+        return addressList;
     }
-    public static Address getByIdAddress(){
-        return new Address();
+
+    public static Address getByIdAddress() {
+        System.out.println("Mock");
+        var resp = new Address();
+        resp.setAddressId(1L);
+        return resp;
     }
+
+    public static Address createAddress() {
+        var resp = new Address();
+        resp.setAddressName("Mock Address");
+        return resp;
+    }
+
+    public static Address createAddressThrowException() {
+        var resp = new Address();
+        resp.setAddressId(1L);
+        resp.setAddressName("Mock Address");
+        return resp;
+    }
+
+    public static Address updateAndDeleteAddress() {
+        var resp = new Address();
+        resp.setAddressId(1L);
+        resp.setAddressName("Mock Address");
+        return resp;
+    }
+
+    public static Address updateAndDeleteAddressThrowException() {
+        var resp = new Address();
+        resp.setAddressName("Mock Address");
+        return resp;
+    }
+
+
+    public static List<Address> bulkCreateAddress() {
+        System.out.println("Mock");
+        var addressList = List.of(
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address()
+        );
+        return addressList;
+    }
+    public static List<Address> bulkCreateAddressThrowException() {
+        System.out.println("Mock");
+        var addressList = List.of(
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address()
+        );
+        Long id = 1L;
+        for (var address : addressList) {
+            address.setAddressId(id++);
+        }
+        return addressList;
+    }
+
+    public static List<Address> bulkUpdateAndDeleteAddress() {
+        System.out.println("Mock");
+        var addressList = List.of(
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address()
+        );
+        Long id = 1L;
+        for (var address : addressList) {
+            address.setAddressId(id++);
+        }
+        return addressList;
+    }
+
+
+
+
+
     //endregion
 
     //region City
     public static List<City> allCities(){
+        System.out.println("Mock");
         return List.of(
                 new City(),
                 new City(),
@@ -35,6 +123,7 @@ public class DataProvider {
         );
     }
     public static City getByIdCity(){
+        System.out.println("Mock");
         return new City();
     }
     //endregion
