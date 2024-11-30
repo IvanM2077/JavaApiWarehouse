@@ -101,6 +101,21 @@ public class DataProvider {
         for (var address : addressList) {
             address.setAddressId(id++);
         }
+        addressList.forEach(x-> System.out.print(x.getAddressId()+" "));
+        return addressList;
+    }
+
+    public static List<Address> bulkUpdateAndDeleteAddressThrowException() {
+        System.out.println("Mock");
+        var addressList = List.of(
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address(),
+                new Address()
+        );
+
         return addressList;
     }
 

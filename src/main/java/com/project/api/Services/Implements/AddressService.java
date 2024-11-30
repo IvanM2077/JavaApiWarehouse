@@ -70,7 +70,7 @@ public class AddressService implements CrudOperations<Address>, QueryOperation<I
         if(entities.stream().anyMatch(address->address.getAddressId() == 0) ){
             throw new IllegalArgumentException("Cannot delete Addresses without Ids Assigned");
         }
-        _I_addressRepository.saveAll(entities);
+        _I_addressRepository.deleteAll(entities);
     }
     //Query Operations
     @Override

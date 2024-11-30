@@ -14,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.junit.jupiter.api.Assertions.*;
@@ -149,24 +148,47 @@ public class  AddressServiceTest {
     @Test
     public void testBulkUpdate(){
         //Arrange
+        var expectedList = DataProvider.bulkUpdateAndDeleteAddress();
+        when(iAddressRepository.saveAll(expectedList)).thenReturn(DataProvider.bulkUpdateAndDeleteAddress());
         //Act
+        this.addressService.BulkUpdate(expectedList);
         //Assert
+        ArgumentCaptor<List<Address>> argumentCaptor = ArgumentCaptor.forClass(List.class);
+        verify(this.iAddressRepository).saveAll(argumentCaptor.capture());
+        assertNotNull(argumentCaptor);
+        assertEquals(expectedList.size(), argumentCaptor.getValue().size());
+
+
     }    @Test
     public void testBulkUpdateThrowException(){
         //Arrange
+        var expectedListAddress = DataProvider.bulkUpdateAndDeleteAddressThrowException();
         //Act
         //Assert
+        assertThrows(IllegalArgumentException.class, ()->{this.addressService.BulkUpdate(expectedListAddress);});
+
     }
     @Test
     public void testBulkDelete(){
         //Arrange
+        var expectedAddresList = DataProvider.bulkUpdateAndDeleteAddress();
+        doNothing().when(this.iAddressRepository).deleteAll(expectedAddresList);
         //Act
+        this.addressService.BulkDelete(expectedAddresList);
         //Assert
-    }    @Test
+        ArgumentCaptor<List<Address>> argumentCaptor = ArgumentCaptor.forClass(List.class);
+        verify(iAddressRepository).deleteAll(argumentCaptor.capture());
+        assertNotNull(argumentCaptor);
+        assertEquals(expectedAddresList.size(), argumentCaptor.getValue().size());
+    }
+    @Test
     public void testBulkDeleteThrowException(){
         //Arrange
+        var expectedListAddress = DataProvider.bulkUpdateAndDeleteAddressThrowException();
         //Act
         //Assert
+        assertThrows(IllegalArgumentException.class, ()->{this.addressService.BulkUpdate(expectedListAddress);});
+
     }
 
 
