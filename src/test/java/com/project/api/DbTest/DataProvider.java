@@ -141,6 +141,54 @@ public class DataProvider {
         System.out.println("Mock");
         return new City();
     }
+    public static City createCity(){
+        var resp = new City();
+        resp.setCityName("CityMock");
+        return resp;
+    }
+    public static City createCityThrowException(){
+        var resp = new City();
+        resp.setCityId(1L);
+        resp.setCityName("CityMock");
+        return resp;
+    }
+    public static City updateAndDeleteCity(){
+        var resp = new City();
+        resp.setCityId(1L);
+        resp.setCityName("CityMock");
+        return resp;
+    }
+    public static City updateAndDeleteCityThrowException(){
+        var resp = new City();
+        resp.setCityName("CityMock");
+        return resp;
+    }
+    public static List<City> createCities(){
+        var resp = List.of(new City(), new City(), new City(), new City(), new City(), new City());
+        int counter = 0;
+        //for(var city: resp){city.setCityId(counter++);}
+        return resp;
+    }
+    public static List<City> createCitiesThrowException(){
+        var resp = List.of(new City(), new City(), new City(), new City(), new City(), new City());
+        int counter = 0;
+        for(var city: resp){city.setCityId(counter++);}
+        return resp;
+    }
+    public static List<City> updateAndDeleteCities(){
+        var resp = List.of(new City(), new City(), new City(), new City(), new City(), new City());
+        int counter = 0;
+        for(var city: resp){city.setCityId(counter++);}
+        return resp;
+    }
+    public static List<City> updateAndDeleteCitiesThrowException(){
+        var resp = List.of(new City(), new City(), new City(), new City(), new City(), new City());
+        int counter = 0;
+        //for(var city: resp){city.setCityId(counter++);}
+        return resp;
+    }
+
+
     //endregion
 
     //region Country
