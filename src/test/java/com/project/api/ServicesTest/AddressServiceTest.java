@@ -137,7 +137,8 @@ public class  AddressServiceTest {
         assertEquals(expectedArrayListAddress.size(), addressArgumentCaptor.getValue().size());
         System.out.println(expectedArrayListAddress.size());
 
-    }    @Test
+    }
+    @Test
     public void testBulkCreateThrowException(){
         //Arrange
         var expectedAddressList = DataProvider.bulkCreateAddressThrowException();
@@ -159,7 +160,8 @@ public class  AddressServiceTest {
         assertEquals(expectedList.size(), argumentCaptor.getValue().size());
 
 
-    }    @Test
+    }
+    @Test
     public void testBulkUpdateThrowException(){
         //Arrange
         var expectedListAddress = DataProvider.bulkUpdateAndDeleteAddressThrowException();
